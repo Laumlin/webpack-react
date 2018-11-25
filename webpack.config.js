@@ -22,6 +22,9 @@ module.exports = {
 			test: /\.js|jsx$/,
 			use: 'babel-loader', //配置babel-loader解析.js或.jsx结尾的文件
 			exclude: /node_modules/
+		}, {
+			test: /\.css$/,
+			use: ['style-loader', 'css-loader']
 		}]
 	},
 
