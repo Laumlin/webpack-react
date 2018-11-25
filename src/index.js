@@ -8,8 +8,8 @@ import ReactDOM from 'react-dom' //把创建好的组件和虚拟DOM放到页面
 // 参数3： 子节点
 // 参数n:  其他子节点
 
-const myh1 = React.createElement('h1', {
-	id: 'myh1'
-}, 'this is a h1')
+import Hello from './components/Hello.jsx'
 
-ReactDOM.render(myh1, document.getElementById('app'))
+ReactDOM.render(<div>
+	<Hello />
+</div>, document.getElementById('app'))
