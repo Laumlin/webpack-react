@@ -8,8 +8,8 @@ import ReactDOM from 'react-dom' //把创建好的组件和虚拟DOM放到页面
 // 参数3： 子节点
 // 参数n:  其他子节点
 
-import Hello from '@/components/Hello'
+import WayOne from '@/components/WayOne'
 
 ReactDOM.render(<div>
-	<Hello />
+	<WayOne />
 </div>, document.getElementById('app'))
