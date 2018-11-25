@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ComItem from '@/components/ComItem'
-import '@/css/comlist.css'
+import cssObj from '@/css/comlist.scss'
 
 export default class ComList extends React.Component {
 	constructor(props) {
@@ -20,7 +20,7 @@ export default class ComList extends React.Component {
 
 	render () {
 		return <div>
-			<h1>这是一个评论表单</h1>
+			<h1 className={cssObj.title}>这是一个评论表单</h1>
 			{this.state.comList.map(item => <ComItem key={item.id} {...item} />)}
 		</div>
 	}
