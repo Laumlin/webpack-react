@@ -15,5 +15,13 @@ module.exports = {
 	//不设置entry入口时，webpack的默认入口文件为src/index.js, 默认输出地址是dist/main.js
 	plugins: [
 		htmlPlugin
-	]
+	],
+
+	module: {
+		rules: [{
+			test: /\.js|jsx$/,
+			use: 'babel-loader', //配置babel-loader解析js或jsx结尾的文件
+			exclude: /node_modules/
+		}]
+	}
 }
