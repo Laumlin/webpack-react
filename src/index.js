@@ -10,8 +10,8 @@ import ReactDOM from 'react-dom' //把创建好的组件和虚拟DOM放到页面
 
 // import WayOne from '@/components/WayOne'
 // import WayOther from '@/components/WayOther'
-import ComList from '@/components/ComList'
+import Comment from '@/components/Comment'
 
 ReactDOM.render(<div>
-	<ComList />
+	<Comment />
 </div>, document.getElementById('app'))
