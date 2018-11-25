@@ -20,8 +20,15 @@ module.exports = {
 	module: {
 		rules: [{
 			test: /\.js|jsx$/,
-			use: 'babel-loader', //配置babel-loader解析js或jsx结尾的文件
+			use: 'babel-loader', //配置babel-loader解析.js或.jsx结尾的文件
 			exclude: /node_modules/
 		}]
+	},
+
+	resolve: {
+		extensions: ['.js', '.jsx', 'json'],
+		alias: {
+			'@': path.join(__dirname, './src')
+		}
 	}
 }
