@@ -8,9 +8,10 @@ import ReactDOM from 'react-dom' //把创建好的组件和虚拟DOM放到页面
 // 参数3： 子节点
 // 参数n:  其他子节点
 
-import WayOne from '@/components/WayOne'
-import WayOther from '@/components/WayOther'
+// import WayOne from '@/components/WayOne'
+// import WayOther from '@/components/WayOther'
+import ComList from '@/components/ComList'
+
 ReactDOM.render(<div>
-	<WayOne />
-	<WayOther />
+	<ComList />
 </div>, document.getElementById('app'))
