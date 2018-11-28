@@ -11,7 +11,8 @@ export default class Comment extends React.Component {
 				{id: 0, name: '张三', comment: '哈哈哈'},
 				{id: 1, name: '张三', comment: '哈哈哈'},
 				{id: 2, name: '张三', comment: '哈哈哈'}
-	  	]
+	  	],
+	  	index: null,
 	  }
 	}
 
@@ -31,7 +32,7 @@ export default class Comment extends React.Component {
 		    	<button className="btn btn-primary" onClick={(e) => {this.addComment(e)}}>提交</button>
 		    </div>
 		  </form>
-		 	<ComList comList={this.state.comList} />
+		 	<ComList comList={this.state.comList} handleDel={() => {this.delete()}}/>
 		</div>
 	}
 
@@ -50,5 +51,12 @@ export default class Comment extends React.Component {
 		} else {
 			alert('姓名和内容不能为空！')
 		}
+	}
+
+	delete = (index) => {
+		this.state.comList.splice(index, 1)
+		this.setState({
+			comList: this.state.comList
+		})
 	}
 }

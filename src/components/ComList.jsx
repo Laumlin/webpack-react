@@ -14,7 +14,11 @@ export default class ComList extends React.Component {
 	render () {
 		return <div>
 			<h1 className={cssObj.title}>这是一个评论表单</h1>
-			{this.props.comList.map(item => <ComItem key={item.id} {...item} />)}
+			{this.props.comList.map((item,index) => <ComItem key={item.id} {...item} handleDel={() => {this.delete(index)}} />)}
 		</div>
+	}
+
+	delete = (index) => {
+		this.props.handleDel(index)
 	}
 }
