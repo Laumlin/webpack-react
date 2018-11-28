@@ -19,7 +19,7 @@ export default class Comment extends React.Component {
 	render () {
 		return <div className="container mt-5">
 			<h5>请输入留言内容：</h5>
-		  <form>
+		  <form id="myform">
 		    <div className="form-group ">
 		      <label htmlFor="usr">用户名:</label>
 		      <input type="text" className="form-control" id="usr" />
@@ -38,16 +38,18 @@ export default class Comment extends React.Component {
 
 	addComment = (e) => {
 		e.preventDefault()
-		let userName = document.getElementById('usr').value
-		let content = document.getElementById('content').value
+		let userName = document.getElementById('usr').value // name
+		let content = document.getElementById('content').value // content
+
 		let list = this.state.comList
 		let index = list.length
+
 		if (userName && content) {
 			let newItem = {id:index, name:userName, comment:content}
-			console.log(newItem)
 			this.setState({
-				comList: list.concat(newItem)
+				comList: list.concat(newItem) // 新增留言
 			})
+			document.getElementById('myform').reset() // 新增留言后，表单置为空
 		} else {
 			alert('姓名和内容不能为空！')
 		}
