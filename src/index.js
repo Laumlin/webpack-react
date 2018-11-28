@@ -10,9 +10,9 @@ import ReactDOM from 'react-dom' //把创建好的组件和虚拟DOM放到页面
 
 // import WayOne from '@/components/WayOne'
 // import WayOther from '@/components/WayOther'
-// import Comment from '@/components/Comment'
-import StateBindInput from '@/components/StateBindInput'
+import Comment from '@/components/Comment'
+// import StateBindInput from '@/components/StateBindInput'
 
 ReactDOM.render(<div>
-	<StateBindInput />
+	<Comment />
 </div>, document.getElementById('app'))
