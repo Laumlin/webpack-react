@@ -17,3 +17,11 @@
 .comment-list-content {
 	text-align: center;
 }
+
+.comment-list-close {
+	float: right;
+	cursor: pointer;
+	&:hover { 
+		background: #ccc;
+	}
+}
