@@ -6,9 +6,6 @@ import cssObj from '@/css/comlist.scss'
 export default class ComList extends React.Component {
 	constructor(props) {
 	  super(props)
-	
-	  this.state = {
-	  }
 	}
 
 	render () {

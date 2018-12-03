@@ -19,21 +19,26 @@ export default class Comment extends React.Component {
 	render () {
 		return <div className="container mt-5">
 			<h5>请输入留言内容：</h5>
-		  <form id="myform">
-		    <div className="form-group ">
-		      <label htmlFor="usr">用户名:</label>
-		      <input type="text" className="form-control" id="usr" />
-		    </div>
-		    <div className="form-group ">
-		      <label htmlFor="content">评论内容:</label>
-		      <input type="text" className="form-control" id="content" />
-		    </div>
-		    <div className="form-group">
-		    	<button className="btn btn-primary" onClick={(e) => {this.addComment(e)}}>提交</button>
-		    </div>
-		  </form>
+			{this.editorForm()}
 		 	<ComList comList={this.state.comList} handleDel={() => {this.delete()}}/>
 		</div>
+	}
+	editorForm () {
+		return (
+			<form id="myform">
+				<div className="form-group ">
+					<label htmlFor="usr">用户名:</label>
+					<input type="text" className="form-control" id="usr" />
+				</div>
+				<div className="form-group ">
+					<label htmlFor="content">评论内容:</label>
+					<input type="text" className="form-control" id="content" />
+				</div>
+				<div className="form-group">
+					<button className="btn btn-primary" onClick={(e) => {this.addComment(e)}}>提交</button>
+				</div>
+			</form>
+		)
 	}
 
 	addComment = (e) => {
@@ -45,9 +50,13 @@ export default class Comment extends React.Component {
 		let index = list.length
 
 		if (userName && content) {
-			let newItem = {id:index, name:userName, comment:content}
-			this.setState({
-				comList: list.concat(newItem) // 新增留言
+			this.setState((preveState) => {
+				const list = preveState.comList
+				const index = list.length
+
+				const newItem = {id:index, name:userName, comment:content}
+				list.push(newItem)
+				return {list}
 			})
 			document.getElementById('myform').reset() // 新增留言后，表单置为空
 		} else {
@@ -56,9 +65,10 @@ export default class Comment extends React.Component {
 	}
 
 	delete = (index) => {
-		this.state.comList.splice(index, 1)
-		this.setState({
-			comList: this.state.comList
+		this.setState((preveState) => {
+			const list = preveState.comList
+			list.splice(index, 1)
+			return {list}
 		})
 	}
 }
