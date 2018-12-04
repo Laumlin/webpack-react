@@ -8,7 +8,8 @@ export default class Comment extends React.Component {
 	  super(props)
 	
 	  this.state = store.getState()
-		
+	  this.handleStoreChange = this.handleStoreChange.bind(this)
+		store.subscribe(this.handleStoreChange)
 	}
 
 	render () {
@@ -42,14 +43,14 @@ export default class Comment extends React.Component {
 		let content = document.getElementById('content').value // content
 
 		if (userName && content) {
-			this.setState((preveState) => {
-				const list = preveState.comList
-				const index = list.length
-	
-				const newItem = {id:index, name:userName, comment:content}
-				list.push(newItem)
-				return {list}
-			})
+			
+			const index = this.state.comList.length
+			const newItem = {id:index, name:userName, comment:content}
+			const action = {
+				type: 'add_comment_item',
+				newItem
+			}
+			store.dispatch(action)
 			document.getElementById('myform').reset() // 新增留言后，表单置为空
 		} else {
 			alert('姓名和内容不能为空！')
@@ -62,5 +63,9 @@ export default class Comment extends React.Component {
 			list.splice(index, 1)
 			return {list}
 		})
+	}
+
+	handleStoreChange () {
+		this.setState(store.getState())
 	}
 }
