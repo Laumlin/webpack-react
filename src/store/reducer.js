@@ -15,5 +15,11 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
+	if (action.type === 'add_comment_item') {
+		const newState = JSON.parse(JSON.stringify(state))
+		const newItem = action.newItem
+		newState.comList.push(newItem)
+		return newState
+	}
 	return state
 }
