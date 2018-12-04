@@ -1,19 +1,14 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import ComList from '@/components/ComList'
+import store from '@/store'
 
 export default class Comment extends React.Component {
 	constructor(props) {
 	  super(props)
 	
-	  this.state = {
-	  	comList: [
-				{id: 0, name: '张三', comment: '哈哈哈'},
-				{id: 1, name: '张三', comment: '哈哈哈'},
-				{id: 2, name: '张三', comment: '哈哈哈'}
-	  	],
-	  	index: null,
-	  }
+	  this.state = store.getState()
+		
 	}
 
 	render () {
@@ -46,14 +41,11 @@ export default class Comment extends React.Component {
 		let userName = document.getElementById('usr').value // name
 		let content = document.getElementById('content').value // content
 
-		let list = this.state.comList
-		let index = list.length
-
 		if (userName && content) {
 			this.setState((preveState) => {
 				const list = preveState.comList
 				const index = list.length
-
+	
 				const newItem = {id:index, name:userName, comment:content}
 				list.push(newItem)
 				return {list}
