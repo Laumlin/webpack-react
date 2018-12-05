@@ -20,7 +20,7 @@ import cssObj from '@/css/comlist.scss'
 // }
 
 // 无状态组件，一般只显示视图
-export default const ComList = (props) => {
+const ComList = (props) => {
 	return (
 		<div>
 			<h1 className={cssObj.title}>这是一个评论表单</h1>
@@ -28,3 +28,5 @@ export default const ComList = (props) => {
 		</div>
 	)
 }
+
+export default ComList
