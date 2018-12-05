@@ -21,5 +21,11 @@ export default (state = defaultState, action) => {
 		newState.comList.push(newItem)
 		return newState
 	}
+	if (action.type === 'del_comment_item') {
+		const newState = JSON.parse(JSON.stringify(state))
+		const index = action.index
+		newState.comList.splice(index, 1)
+		return newState
+	}
 	return state
 }
