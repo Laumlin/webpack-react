@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import ComList from '@/components/ComList'
-import { ADD_COMMENT_ITEM } from  '@/store/actionTypes'
+import { getAddCommentAction } from  '@/store/actionCreator'
 import store from '@/store'
 
 export default class Comment extends React.Component {
@@ -47,11 +47,11 @@ export default class Comment extends React.Component {
 			
 			const index = this.state.comList.length
 			const newItem = {id:index, name:userName, comment:content}
-			const action = {
-				type: ADD_COMMENT_ITEM,
-				newItem
-			}
+			
+			//action
+			const action = getAddCommentAction(newItem)
 			store.dispatch(action)
+
 			document.getElementById('myform').reset() // 新增留言后，表单置为空
 		} else {
 			alert('姓名和内容不能为空！')

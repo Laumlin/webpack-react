@@ -1,7 +1,7 @@
 import React from 'react'
 import cssObj from '@/css/comlist.scss' //自定义
 import store from '@/store'
-import { DEL_COMMENT_ITEM } from '@/store/actionTypes'
+import { getDelCommentAction } from '@/store/actionCreator'
 
 export default class ComItem extends React.Component {
 	constructor(props) {
@@ -23,10 +23,7 @@ export default class ComItem extends React.Component {
 		)
 	}
 	delete = (index) => {
-		const action = {
-			type: DEL_COMMENT_ITEM,
-			index
-		}
+		const action = getDelCommentAction(index)
 		store.dispatch(action)
 	}
 }
