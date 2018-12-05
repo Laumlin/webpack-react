@@ -16,7 +16,7 @@ export default class Comment extends React.Component {
 		return <div className="container mt-5">
 			<h5>请输入留言内容：</h5>
 			{this.editorForm()}
-		 	<ComList comList={this.state.comList} handleDel={() => {this.delete()}}/>
+		 	<ComList comList={this.state.comList}/>
 		</div>
 	}
 	editorForm () {
@@ -55,14 +55,6 @@ export default class Comment extends React.Component {
 		} else {
 			alert('姓名和内容不能为空！')
 		}
-	}
-
-	delete = (index) => {
-		this.setState((preveState) => {
-			const list = preveState.comList
-			list.splice(index, 1)
-			return {list}
-		})
 	}
 
 	handleStoreChange () {

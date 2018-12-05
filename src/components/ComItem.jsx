@@ -1,5 +1,7 @@
 import React from 'react'
 import cssObj from '@/css/comlist.scss' //自定义
+import store from '@/store'
+
 export default class ComItem extends React.Component {
 	constructor(props) {
 	  super(props)
@@ -8,16 +10,22 @@ export default class ComItem extends React.Component {
 	}
 
 	render () {
-		return <div>
-			<div className={cssObj['comment-list-wrap']}>
-				<span className={cssObj['comment-list-close']} onClick={() => {this.delete()}}>✘</span>
-				<h4 className={cssObj['comment-list-user']}>{this.props.name}</h4>
-				<p className={cssObj['comment-list-content']}>{this.props.comment}</p>
+		const { index, name, comment } = this.props
+		return (
+			<div>
+				<div className={cssObj['comment-list-wrap']}>
+					<span className={cssObj['comment-list-close']} onClick={() => {this.delete(index)}}>✘</span>
+					<h4 className={cssObj['comment-list-user']}>{name}</h4>
+					<p className={cssObj['comment-list-content']}>{comment}</p>
+				</div>
 			</div>
-		</div>
+		)
 	}
-
-	delete = () => {
-		this.props.handleDel()
+	delete = (index) => {
+		const action = {
+			type: 'del_comment_item',
+			index
+		}
+		store.dispatch(action)
 	}
 }
