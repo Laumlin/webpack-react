@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import ComList from '@/components/ComList'
+import { ADD_COMMENT_ITEM } from  '@/store/actionTypes'
 import store from '@/store'
 
 export default class Comment extends React.Component {
@@ -47,7 +48,7 @@ export default class Comment extends React.Component {
 			const index = this.state.comList.length
 			const newItem = {id:index, name:userName, comment:content}
 			const action = {
-				type: 'add_comment_item',
+				type: ADD_COMMENT_ITEM,
 				newItem
 			}
 			store.dispatch(action)
