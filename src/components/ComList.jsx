@@ -3,19 +3,28 @@ import React from 'react'
 import ComItem from '@/components/ComItem'
 import cssObj from '@/css/comlist.scss'
 
-export default class ComList extends React.Component {
-	constructor(props) {
-	  super(props)
-	}
+// 有状态组件，组件涉及逻辑操作时使用
+// export default class ComList extends React.Component {
+// 	constructor(props) {
+// 	  super(props)
+// 	}
 
-	render () {
-		return <div>
+// 	render () {
+// 		return (
+// 			<div>
+// 				<h1 className={cssObj.title}>这是一个评论表单</h1>
+// 				{this.props.comList.map((item,index) => (<ComItem key={item.id} {...item} index={index} />))}
+// 			</div>
+// 		)
+// 	}
+// }
+
+// 无状态组件，一般只显示视图
+export default const ComList = (props) => {
+	return (
+		<div>
 			<h1 className={cssObj.title}>这是一个评论表单</h1>
-			{this.props.comList.map((item,index) => <ComItem key={item.id} {...item} handleDel={() => {this.delete(index)}} />)}
+			{props.comList.map((item,index) => (<ComItem key={item.id} {...item} index={index} />))}
 		</div>
-	}
-
-	delete = (index) => {
-		this.props.handleDel(index)
-	}
+	)
 }
